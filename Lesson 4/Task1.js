@@ -5,11 +5,11 @@ function pow(x, n) {
   }
   return res;
 }
-var x = parseInt(prompt("Введите число", ""));
-var n = parseInt(prompt("В какую степень возвести?", ""));
+var x = parseInt(prompt('Введите число', ''));
+var n = parseInt(prompt('В какую степень возвести?', ''));
 if (x > 0 && n > 0) {
   alert(pow(x, n));
 } else {
-  alert("Введите положительное число");
+  alert('Введите положительное число');
 }
 
