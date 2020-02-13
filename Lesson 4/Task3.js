@@ -4,7 +4,7 @@ function treeSum(arr) {
   for (var i = 0; i < arr.length; i++) {
     if (typeof arr[i] == 'number' && !(isNaN(arr[i]))) {
       result += +arr[i];
-    } else if (typeof arr[i] == 'object' && arr && arr.length) {
+    } else if (typeof arr[i] == 'object' && arr[i] && arr.length) {
       result += treeSum(arr[i]);
     }
   }
