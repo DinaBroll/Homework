@@ -1,17 +1,49 @@
-function Cat(name) {
-  var foodAmount = 50;
+function Animal(name) {
+  this._name = name;
+  this._foodAmount = 50;
+  var self = this;
 
-  var formatFoodAmount = function() {
-    return foodAmount + ' гр.';
+  function formatFoodAmount() {
+    return self._foodAmount + ' гр.';
+  }
+
+  this.dailyNorm = function(amount) {
+    if (!arguments.length) {
+      return formatFoodAmount();
+    }
+    if (amount < 50 || amount > 500) {
+      return 'Недопустимое количество корма';
+    }
+    self._foodAmount = amount;
   };
 
   this.name = name;
-
   this.feed = function() {
-    console.log('Насыпаем в миску ' + formatFoodAmount() + ' корма');
+    console.log('Насыпаем в миску ' + self.dailyNorm() + ' корма.');
+  };
+}
+
+function Cat(name) {
+  Animal.apply(this, arguments);
+  var animalFeed = this.feed;
+  var self = this;
+
+  self.feed = function() {
+    animalFeed();
+    console.log('Кот доволен ^_^');
+    return self;
+  };
+
+  self.stroke = function() {
+    console.log('Гладим кота.');
+    return self;
   };
 }
 
 var grayCat = new Cat('Tom');
 
-grayCat.feed();
+grayCat
+  .feed()
+  .stroke()
+  .stroke()
+  .feed();
