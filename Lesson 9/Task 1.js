@@ -18,6 +18,7 @@ function Animal(name) {
   };
 
   this.name = name;
+
   this.feed = function() {
     console.log('Насыпаем в миску ' + self.dailyNorm() + ' корма.');
   };
