@@ -1,9 +1,14 @@
 var countSentencesLetters = function(text) {
-    var reg = 
-    var arr = text.split(reg);
-    for(i = 0; i < arr.lenth; i++){
-        return arr[i] + ': Letters quantity is:';
+  text.split(/[.!?]/).forEach(function(sent) {
+    if (sent === '') {
+      return;
     }
-   
+    var numLetters = sent.split('').filter(function(letter) {
+      if (letter !== ' ' && letter !== ',') {
+        return letter;
+      }
+    }).length;
+    alert(sent + ': Letters quantity is: ' + numLetters);
+  });
 };
 countSentencesLetters('Привет, студент! Студент... Как дела, студент?');
